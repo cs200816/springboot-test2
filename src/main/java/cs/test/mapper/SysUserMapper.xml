@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cs.test.mapper.SysUserMapper">
+	<resultMap id="user" type="cs.test.entity.SysUser">
+		<id property="userId" jdbcType="INTEGER" column="USER_ID" />
+		<result property="loginName" jdbcType="VARCHAR" column="LOGIN_NAME" />
+		<result property="passWord" jdbcType="VARCHAR" column="PASS_WORD" />
+		<result property="name" jdbcType="VARCHAR" column="NAME" />
+		<result property="gender" jdbcType="VARCHAR" column="GENDER" />
+		<result property="headImg" jdbcType="VARCHAR" column="HEAD_IMG" />
+		<result property="companyCode" jdbcType="VARCHAR" column="COMPANY_CODE" />
+		<result property="company" jdbcType="VARCHAR" column="COMPANY" />
+		<result property="departmentCode" jdbcType="VARCHAR" column="DEPARTMENT_CODE" />
+		<result property="department" jdbcType="VARCHAR" column="DEPARTMENT" />
+		<result property="roomCode" jdbcType="VARCHAR" column="ROOM_CODE" />
+		<result property="isAdmin" jdbcType="INTEGER" column="IS_ADMIN" />
+		<result property="userSort" jdbcType="INTEGER" column="USER_SORT" />
+		<result property="isLock" jdbcType="INTEGER" column="IS_LOCK" />
+		<result property="isUse" jdbcType="INTEGER" column="IS_USE" />
+		<result property="enteId" jdbcType="INTEGER" column="ENTE_ID" />
+		<result property="duty" jdbcType="VARCHAR" column="DUTY" />
+		<result property="jobTitle" jdbcType="VARCHAR" column="JOB_TITLE" />
+		<result property="movePhone" jdbcType="VARCHAR" column="MOVE_PHONE" />
+		<result property="movePhone2" jdbcType="VARCHAR" column="MOVE_PHONE2" />
+		<result property="officePhone" jdbcType="VARCHAR" column="OFFICE_PHONE" />
+		<result property="homePhone" jdbcType="VARCHAR" column="HOME_PHONE" />
+		<result property="fax" jdbcType="VARCHAR" column="FAX" />
+		<result property="email" jdbcType="VARCHAR" column="EMAIL" />
+		<result property="qq" jdbcType="VARCHAR" column="QQ" />
+		<result property="weiXin" jdbcType="VARCHAR" column="WEI_XIN" />
+		<result property="instantMessage" jdbcType="VARCHAR" column="INSTANT_MESSAGE" />
+		<result property="instantMessagePass" jdbcType="VARCHAR"
+			column="INSTANT_MESSAGE_PASS" />
+		<result property="homePage" jdbcType="VARCHAR" column="HOME_PAGE" />
+		<result property="messageAddress" jdbcType="VARCHAR" column="MESSAGE_ADDRESS" />
+		<result property="remark" jdbcType="VARCHAR" column="REMARK" />
+		<result property="lastLoginTime" jdbcType="TIMESTAMP" column="LAST_LOGIN_TIME" />
+		<result property="version" jdbcType="INTEGER" column="VERSION"/>
+		<result property="createUserId" jdbcType="INTEGER" javaType="Integer" column="CREATE_USER_ID" />
+		<result property="createUserName" jdbcType="NVARCHAR" javaType="String" column="CREATE_USER_NAME" />
+		<result property="createTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" column="CREATE_TIME" />
+		<result property="updateUserId" jdbcType="INTEGER" javaType="Integer" column="UPDATE_USER_ID" />
+		<result property="updateUserName" jdbcType="NVARCHAR" javaType="String" column="UPDATE_USER_NAME" />
+		<result property="updateTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" column="UPDATE_TIME" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		USER_ID,
+		LOGIN_NAME,
+		PASS_WORD,
+		NAME,
+		GENDER,
+		HEAD_IMG,
+		COMPANY_CODE,
+		COMPANY,
+		DEPARTMENT_CODE,
+		DEPARTMENT,
+		ROOM_CODE,
+		IS_ADMIN,
+		USER_SORT,
+		IS_LOCK,
+		IS_USE,
+		ENTE_ID,
+		DUTY,
+		JOB_TITLE,
+		MOVE_PHONE,
+		MOVE_PHONE2,
+		OFFICE_PHONE,
+		HOME_PHONE,
+		FAX,
+		EMAIL,
+		QQ,
+		WEI_XIN,
+		INSTANT_MESSAGE,
+		INSTANT_MESSAGE_PASS,
+		HOME_PAGE,
+		MESSAGE_ADDRESS,
+		REMARK,
+		LAST_LOGIN_TIME,
+		VERSION,
+		CREATE_USER_ID,
+        CREATE_USER_NAME,
+        CREATE_TIME,
+        UPDATE_USER_ID,
+        UPDATE_USER_NAME,
+        UPDATE_TIME
+		
+	</sql>
+	<select id="load" parameterType="java.lang.Integer" resultMap="user">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SYS_USER
+		WHERE
+		USER_ID = #{userId}
+	</select>
+
+	<select id="findSysUserByLoginName" parameterType="map"
+		resultMap="user">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM SYS_USER
+		WHERE
+		LOGIN_NAME= #{loginName}
+	</select>
+
+	
+
+</mapper>
+
